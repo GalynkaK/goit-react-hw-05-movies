@@ -1,0 +1,1 @@
+exsport Paginator from './Paginator.jsx';

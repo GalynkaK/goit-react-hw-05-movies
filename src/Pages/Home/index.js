@@ -1,0 +1,1 @@
+expect default from './Home.jsx';

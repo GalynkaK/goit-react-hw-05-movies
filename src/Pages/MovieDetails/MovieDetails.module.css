@@ -1,0 +1,116 @@
+.button {
+  padding-left: 25px;
+  color: #272727;
+  font-size: 16px;
+  border: none;
+  background-color: white;
+  border-radius: 7px;
+  margin-left: 5px;
+}
+.button:hover {
+  color:  olive;
+  cursor: pointer;
+}
+
+.button::before {
+  content: '';
+  background-image: url(/src/svg/left-arrow-svgrepo-com.svg);
+  background-size: cover;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 10px;
+  top: 122px;
+}
+
+.loading {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: purple;
+  position: absolute;
+  transition: 0.5s;
+  top: 0;
+  left: 0;
+}
+
+.imgWrap {
+  display: flex;
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+.image {
+  width: 270px;
+  height: 100%;
+}
+
+.wrapper {
+  display: inline-block;
+  margin-left: 50px;
+  padding-right: 100px;
+}
+
+.paragraph {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.list{
+  list-style: none;
+  display: flex;
+  margin-left: 76px;
+}
+
+.castButton{
+  padding: 9px 9px 9px 25px;
+  position: relative;
+  background-color: olive;
+  font-size: 16px;
+  border: none;
+  width: 110px;
+  color: white;
+  border-radius: 7px;
+}
+
+.castButton:hover {
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+.castButton::before {
+  content: '';
+  background-image: url(/src/svg/user_1.svg);
+  background-size: cover;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 25px;
+}
+
+.reviews{
+  position: relative;
+  padding: 9px 9px 9px 30px;
+  background-color: olive;
+  font-size: 16px;
+  width: 110px;
+  border: none;
+  color: white;
+  border-radius: 7px;
+  margin-left: 15px;
+}
+
+.reviews:hover {
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+.reviews::before {
+  content: '';
+  background-image: url(/src/svg/book-alt.svg);
+  background-size: cover;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 25px;
+}
