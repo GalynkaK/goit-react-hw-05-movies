@@ -1,1 +1,1 @@
-exsport Paginator from './Paginator.jsx';
+exsport { default } from './Paginator.jsx';
