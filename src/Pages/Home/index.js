@@ -1,1 +1,1 @@
-expect default from './Home.jsx';
+export Home from './Home.jsx';
