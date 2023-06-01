@@ -5,6 +5,10 @@ import { getMovieDetails } from 'components/Service/Api';
 import { useEffect, useState } from 'react';
 import { MagnifyingGlass } from 'react-loader-spinner';
 import { Suspense } from 'react';
+// eslint-disable-next-line
+import Cast from '../../components/Cast/Cast';
+// eslint-disable-next-line
+import Reviews from '../../components/Reviews/Reviews';
 
 
 const MovieDetails = () => {
@@ -78,12 +82,12 @@ const MovieDetails = () => {
             <div>
               <ul className={css.list}>
                 <li>
-                  <Link to={`${movieId}/cast`} state={{ from: cameBack }}>
+                  <Link to={`/movies/${movieId}/cast`} state={{ from: cameBack }}>
                     <button className={css.castButton}>Cast</button>
                   </Link>
                 </li>
                 <li>
-                  <Link to={`${movieId}/reviews`} state={{ from: cameBack }}>
+                  <Link to={`/movies/${movieId}/reviews`} state={{ from: cameBack }}>
                     <button className={css.reviews}>Reviews</button>
                   </Link>
                 </li>

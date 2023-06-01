@@ -12,21 +12,30 @@ const Cast = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    const getData = async () => {
+    const fetchData = async () => {
       try {
         setLoading(true);
-        const { cast } = await getMovieCast(movieId);
-        setData(cast);
+        const castData = await getMovieCast(movieId);
+        setData(castData.cast);
         setLoading(false);
       } catch (error) {
         console.log(error);
-      } finally {
         setLoading(false);
       }
     };
 
-    getData();
+    fetchData();
   }, [movieId]);
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        console.log('Text copied to clipboard:', text);
+      })
+      .catch((error) => {
+        console.log('Failed to copy text:', error);
+      });
+  };
 
   return (
     <>
@@ -44,25 +53,28 @@ const Cast = () => {
           />
         </div>
       ) : data && data.length > 0 ? (
-        <div className={css.listWrap}>
-          <ul className={css.list}>
-            {data.map(({ name, character, profile_path, id }) => (
-              <li key={id} className={css.listItem}>
-                {profile_path ? (
-                  <img
-                    className={css.listImg}
-                    alt={name}
-                    src={`https://image.tmdb.org/t/p/w92${profile_path}`}
-                  />
-                ) : (
-                  <img className={css.listImg} alt={name} src='/src/svg/user_1.svg' />
-                )}
+        <div className={css.container}>
+          <div className={css.listWrap}>
+            <ul className={css.list}>
+              {data.map(({ name, character, profile_path, id }) => (
+                <li key={id} className={css.listItem}>
+                  {profile_path ? (
+                    <img
+                      className={css.listImg}
+                      alt={name}
+                      src={`https://image.tmdb.org/t/p/w92${profile_path}`}
+                    />
+                  ) : (
+                    <img className={css.listImg} alt={name} src='/src/svg/user_1.svg' />
+                  )}
 
-                <p className={css.listName}>{name}</p>
-                <p className={css.listCharacter}>{character}</p>
-              </li>
-            ))}
-          </ul>
+                  <p className={css.listName}>{name}</p>
+                  <p className={css.listCharacter}>{character}</p>
+                  <button onClick={() => handleCopy(name)}>Copy Name</button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       ) : (
         <p className={css.error}>No data found</p>

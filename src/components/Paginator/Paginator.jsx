@@ -18,7 +18,7 @@ function Paginator({ totalPages, setSearchParams, params, currentPage }) {
           onPageChange={handlePageClick}
           pageRangeDisplayed={4}
           marginPagesDisplayed={2}
-          pageCount={totalPages}
+          pageCount={totalPages - 1}
           renderOnZeroPageCount={null}
           forcePage={currentPage}
           containerClassName="container"

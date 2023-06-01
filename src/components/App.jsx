@@ -11,19 +11,20 @@ const MovieDetails = lazy(() => import('../Pages/MovieDetails/MovieDetails.jsx')
 const Cast = lazy(() => import('./Cast/Cast.jsx'));
 const Reviews = lazy(() => import('./Reviews/Reviews.jsx'));
 
-const App = () => {
-  const StyledLink = styled(NavLink)`
-    color: #e9e9e9;
-    font-size: 30px;
-    margin-left: 200px;
+const StyledLink = styled(NavLink)`
+  color: #e9e9e9;
+  font-size: 30px;
+  margin-left: 200px;
 
-    &:last-child {
-      margin-left: 50px;
-    }
-    &.active {
-      color: orange;
-    }
-  `;
+  &:last-child {
+    margin-left: 50px;
+  }
+  &.active {
+    color: orange;
+  }
+`;
+
+const App = () => {
 
   return (
     <>

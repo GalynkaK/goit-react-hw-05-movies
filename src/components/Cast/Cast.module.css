@@ -2,6 +2,12 @@
   width: 100px;
 }
 
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .list {
   list-style: none;
 }
