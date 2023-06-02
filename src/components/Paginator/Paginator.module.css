@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin: 10px 0;
+  margin: 10px auto;
   font-size: 18px;
+  width: auto;
 }
 
 .selected {
@@ -30,4 +31,19 @@ li {
 li:hover {
   background-color: orange;
   color: #000;
+  flex-grow: 1;
+}
+
+.pagination-button {
+  display: block;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1px solid orange;
+  border-radius: 7px;
+}
+
+.pagination-button:hover {
+  background-color: orange;
+  color: #000;
+  flex-grow: 0;
 }

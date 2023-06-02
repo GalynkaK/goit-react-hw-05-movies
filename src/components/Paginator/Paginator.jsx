@@ -1,6 +1,6 @@
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
-import './Paginator.module.css';
+import css from './Paginator.module.css';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 function Paginator({ totalPages, setSearchParams, params, currentPage }) {
@@ -21,13 +21,13 @@ function Paginator({ totalPages, setSearchParams, params, currentPage }) {
           pageCount={totalPages - 1}
           renderOnZeroPageCount={null}
           forcePage={currentPage}
-          containerClassName="container"
-          activeClassName="selected"
-          pageClassName="page"
-          breakClassName="break"
-          previousClassName="previous"
-          nextClassName="next"
-          disabledClassName="disabled"
+          containerClassName={css.container}
+          activeClassName={css.selected}
+          pageClassName={css['pagination-button']}
+          breakClassName={css.break}
+          previousClassName={css.previous}
+          nextClassName={css.next}
+          disabledClassName={css.disabled}
         />
       </div>
     </>
