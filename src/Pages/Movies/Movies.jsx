@@ -9,6 +9,7 @@ const Movies = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -25,7 +26,8 @@ const Movies = () => {
         const { results, total_pages } = await searchMovie(query, page);
         setMovies(results);
         setError(null);
-        setTotalPages(total_pages);
+        setTotalPages(total_pages || 0);
+        setCurrentPage(page - 1);
       } catch (error) {
         setError('An error occurred. Please try again later.');
       } finally {
@@ -50,9 +52,16 @@ const Movies = () => {
     }
     const newSearchParams = new URLSearchParams();
     newSearchParams.set('query', searchQuery);
-    newSearchParams.set('page', '1');
+    newSearchParams.set('page', 1);
     window.location.search = newSearchParams.toString();
     e.target.reset();
+  };
+
+  const handlePageChange = (selectedPage) => {
+    const newSearchParams = new URLSearchParams();
+    newSearchParams.set('query', query);
+    newSearchParams.set('page', String(selectedPage + 1));
+    window.location.search = newSearchParams.toString();
   };
 
   return (
@@ -78,7 +87,10 @@ const Movies = () => {
         ) : movies.length > 0 ? (
           movies.map(({ title, id, poster_path }) => (
             <li key={id}>
-              <Link to={`/movies/${id}`}>{title}</Link>
+              <Link to={`/movies/${id}`}>
+                {title}
+                {poster_path && <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt={title} />}
+              </Link>
             </li>
           ))
         ) : (
@@ -91,9 +103,9 @@ const Movies = () => {
       </ul>
       <Paginator
         totalPages={totalPages}
-        setSearchParams={() => { }}
+        setSearchParams={handlePageChange}
         params={{ query, page }}
-        currentPage={Number(page - 1) || 0}
+        currentPage={currentPage}
       />
     </>
   );
